@@ -51,7 +51,8 @@ while True:
     event, values = window.read(timeout=50)
     if event == Pg.WIN_CLOSED:
         break
-        
+    
+    # updating everything above with "keys" we created
     update_image(
         original,
         values['-BLUR-'],
