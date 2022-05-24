@@ -20,7 +20,10 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
         image = ImageOps.mirror(image)
     if flip:
         image = ImageOps.flip(image)
-
+        
+    # adapting the original image so our window stays the same regardless of its og size
+    image.thumbnail((400, 400))
+    # creating a free space in RAM, so we are able to work with the image
     bio = BytesIO()
     image.save(bio, format='PNG')
 
