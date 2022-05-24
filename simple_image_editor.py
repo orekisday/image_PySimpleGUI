@@ -42,7 +42,7 @@ control_col = Pg.Column([
     [Pg.Frame('Contrast', layout=[[Pg.Slider(range=(0, 10), orientation='h', key='-CONTRAST-')]])],
     [Pg.Checkbox('Emboss', key='-EMBOSS-'), Pg.Checkbox('Contour', key='-CONTOUR-')],
     [Pg.Checkbox('Mirror', key='-MIRROR-'), Pg.Checkbox('Flip', key='-FLIPY-')],
-    [Pg.Button('Save image', key='-SAVE-')], ])
+    [Pg.Button('Save image', key='-SAVE-')]])
 
 image_col = Pg.Column([[Pg.Image(image_path, key='-IMAGE-')]])
 layout = [[control_col, image_col]]
