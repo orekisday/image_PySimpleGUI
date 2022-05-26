@@ -33,7 +33,7 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
 # addiing an attractive theme
 Pg.theme('Purple')
 
-# letting the user choose a file
+# letting the user choose an image
 image_path = Pg.popup_get_file('Open', no_window=True)
 
 # creating the look of GUI
@@ -45,7 +45,11 @@ control_col = Pg.Column([
     [Pg.Button('Save image', key='-SAVE-')]])
 
 image_col = Pg.Column([[Pg.Image(image_path, key='-IMAGE-')]])
-layout = [[control_col, image_col]]
+
+# creating a button that shows the university logo after it is tapped
+logo_button = ([[Pg.Button("Show logo", key='-SHOW-')]])
+
+layout = [[logo_button, control_col, image_col]]
 
 original = Image.open(image_path)
 window = Pg.Window('Image Editor', layout)
@@ -64,7 +68,11 @@ while True:
         values['-CONTOUR-'],
         values['-MIRROR-'],
         values['-FLIPY-'])
-
+    
+    # download the attached .png file 
+    if event == "-SHOW-":
+        a = Pg.Column([[Pg.Image("alatoo_logo.png")]])
+    
     if event == '-SAVE-':
         save_path = Pg.popup_get_file('Save', save_as=True, no_window=True) + '.png'
         image.save(save_path, 'PNG')
