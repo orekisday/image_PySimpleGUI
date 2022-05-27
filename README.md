@@ -2,6 +2,9 @@
 
 ### Before starting you should make sure that you have all the libraries installed. In this case I created a vertual environment and a txt file with the exactly [requirements](https://github.com/orekisday/image_PySimpleGUI/blob/main/config/config_GUI.txt) you will need to run the program.
 
+#### Just [download](https://github.com/orekisday/image_PySimpleGUI/blob/main/config/config_GUI.txt) the requirements and run the next command in your terminal:
+##### pip install -r config_GUI.txt 
+
 I have created a mini image editor that is fun to use, and here is how you can use it:
 
 ### 1. When you run the code it opens your files where you can choose a png images for editing. You can [download](https://github.com/orekisday/image_PySimpleGUI/tree/main/images) cool images in case you don't have any.
