@@ -1,5 +1,9 @@
 # Simple Python GUI for image editing
 
+## PEP8<img width="1315" alt="Screen Shot 2022-05-27 at 11 40 08 AM" src="https://user-images.githubusercontent.com/100344808/170637634-bae3eab4-d8e4-4f56-b9a4-60b857088821.png">
+
+
+
 ### Before starting you should make sure that you have all the libraries installed. In this case I created a vertual environment and a txt file with the exactly [requirements](https://github.com/orekisday/image_PySimpleGUI/blob/main/config/config_GUI.txt) you will need to run the program.
 
 #### Just [download](https://github.com/orekisday/image_PySimpleGUI/blob/main/config/config_GUI.txt) the requirements and run the next command in your terminal:
