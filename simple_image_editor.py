@@ -3,10 +3,12 @@ from PIL import Image, ImageFilter, ImageOps
 from io import BytesIO
 
 
-# creating GUI funcrions and setting up the cases
+# creating GUI functions and setting up the cases
 def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
-  
-    # turning the "image" into a global variable, for we used it in the outer scope
+    """
+    turning the "image" into a global variable,
+    for we used it in the outer scope
+    """
     global image
     image = original_one.filter(ImageFilter.GaussianBlur(blur))
     image = image.filter(ImageFilter.UnsharpMask(contrast))
@@ -20,8 +22,11 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
         image = ImageOps.mirror(image)
     if flip:
         image = ImageOps.flip(image)
-        
-    # adapting the original image so our window stays the same regardless of its og size
+
+    """
+    adapting the original image
+    so our window stays the same regardless of its og size
+    """
     image.thumbnail((400, 400))
     # creating a free space in RAM, so we are able to work with the image
     bio = BytesIO()
@@ -30,7 +35,7 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
     window['-IMAGE-'].update(data=bio.getvalue())
 
 
-# addiing an attractive theme
+# adding an attractive theme
 Pg.theme('Purple')
 
 # letting the user choose an image
@@ -38,11 +43,17 @@ image_path = Pg.popup_get_file('Open', no_window=True)
 
 # creating the look of GUI
 control_col = Pg.Column([
-    [Pg.Frame('Blur', layout=[[Pg.Slider(range=(0, 10), orientation='h', key='-BLUR-')]])],
-    [Pg.Frame('Contrast', layout=[[Pg.Slider(range=(0, 10), orientation='h', key='-CONTRAST-')]])],
-    [Pg.Checkbox('Emboss', key='-EMBOSS-'), Pg.Checkbox('Contour', key='-CONTOUR-')],
-    [Pg.Checkbox('Mirror', key='-MIRROR-'), Pg.Checkbox('Flip', key='-FLIPY-')],
-    [Pg.Button('Save image', key='-SAVE-')]])
+    [Pg.Frame('Blur', layout=[[Pg.Slider(range=(0, 10),
+              orientation='h', key='-BLUR-')]])],
+    [Pg.Frame('Contrast', layout=[[Pg.Slider(range=(0, 10),
+              orientation='h', key='-CONTRAST-')]])],
+
+    [Pg.Checkbox('Emboss', key='-EMBOSS-'),
+        Pg.Checkbox('Contour', key='-CONTOUR-')],
+    [Pg.Checkbox('Mirror', key='-MIRROR-'),
+        Pg.Checkbox('Flip', key='-FLIPY-')],
+    [Pg.Button('Save image', key='-SAVE-')]
+])
 
 image_col = Pg.Column([[Pg.Image(image_path, key='-IMAGE-')]])
 
@@ -58,7 +69,7 @@ while True:
     event, values = window.read(timeout=50)
     if event == Pg.WIN_CLOSED:
         break
-    
+
     # updating everything above with "keys" we created
     update_image(
         original,
@@ -68,13 +79,15 @@ while True:
         values['-CONTOUR-'],
         values['-MIRROR-'],
         values['-FLIPY-'])
-    
-    # download the attached .png file 
+
+    # download the attached .png file
     if event == "-SHOW-":
         a = Pg.Column([[Pg.Image("alatoo_logo.png")]])
-    
+
     if event == '-SAVE-':
-        save_path = Pg.popup_get_file('Save', save_as=True, no_window=True) + '.png'
+        save_path = Pg.popup_get_file(
+            'Save', save_as=True, no_window=True
+        ) + '.png'
         image.save(save_path, 'PNG')
 
 window.close()
