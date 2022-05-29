@@ -30,7 +30,12 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
     image.thumbnail((400, 400))
     # creating a free space in RAM, so we are able to work with the image
     bio = BytesIO()
-    image.save(bio, format='PNG')
+
+    # error handling
+    try:
+        image.save(bio, format='PNG')
+    except ValueError:
+        print('Just click on "close".')
 
     window['-IMAGE-'].update(data=bio.getvalue())
 
