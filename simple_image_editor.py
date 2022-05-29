@@ -56,11 +56,13 @@ control_col = Pg.Column([
 ])
 
 image_col = Pg.Column([[Pg.Image(image_path, key='-IMAGE-')]])
+"""
+getting the logo of our uni from your files.
+make sure to download it from the git repository
+"""
+logo_col = Pg.Column([[Pg.Image('alatoo_logo.png')]])
 
-# creating a button that shows the university logo after it is tapped
-logo_button = ([[Pg.Button("Show logo", key='-SHOW-')]])
-
-layout = [[logo_button, control_col, image_col]]
+layout = [[logo_col, control_col, image_col]]
 
 original = Image.open(image_path)
 window = Pg.Window('Image Editor', layout)
@@ -79,10 +81,6 @@ while True:
         values['-CONTOUR-'],
         values['-MIRROR-'],
         values['-FLIPY-'])
-
-    # download the attached .png file
-    if event == "-SHOW-":
-        a = Pg.Column([[Pg.Image("alatoo_logo.png")]])
 
     if event == '-SAVE-':
         save_path = Pg.popup_get_file(
