@@ -52,6 +52,7 @@ control_col = Pg.Column([
         Pg.Checkbox('Contour', key='-CONTOUR-')],
     [Pg.Checkbox('Mirror', key='-MIRROR-'),
         Pg.Checkbox('Flip', key='-FLIPY-')],
+    [Pg.Button("Choose another image", key="-CHOOSING-")],
     [Pg.Button('Save image', key='-SAVE-')]
 ])
 
@@ -81,6 +82,9 @@ while True:
         values['-CONTOUR-'],
         values['-MIRROR-'],
         values['-FLIPY-'])
+
+    if event == "-CHOOSING-":
+        image_path = Pg.popup_get_file('Open', no_window=True)
 
     if event == '-SAVE-':
         save_path = Pg.popup_get_file(
