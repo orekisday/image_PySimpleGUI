@@ -40,6 +40,36 @@ def update_image(original_one, blur, contrast, emboss, contour, mirror, flip):
     window['-IMAGE-'].update(data=bio.getvalue())
 
 
+# creating another window with "about" and "copyright" sections
+def additional_window():
+    layout_new = [
+        [Pg.Text("About: A simple image editor. You can flip, mirror "
+                 "and do other fun stuff with your image. "
+                 "if you choose other image format other than 'png' "
+                 "an error might occur, "
+                 "so in that case just click on 'Close' "
+                 "button and you will be able to edit that image. \n"
+                 "Copyright: © \n"
+                 "Year of publication: 2022. \n"
+                 "Owner: @cutesytee / Henry Ernestov. \n"
+                 "Some rights reserved:\n"
+                 "You can do whatever you want with this code.\n"
+                 "Just give me credits :p. ",
+                 size=(50, 20), key='-TEXT-')]
+    ]
+
+    window = Pg.Window("About and Copyright", layout_new)
+
+    while True:
+        event, values = window.read()
+        if event == Pg.WINDOW_CLOSED:
+            break
+        additional_window()
+        window['-TEXT-'].update()
+
+    window.close()
+
+
 # adding an attractive theme
 Pg.theme('Purple')
 
@@ -66,9 +96,12 @@ image_col = Pg.Column([[Pg.Image(image_path, key='-IMAGE-')]])
 getting the logo of our uni from your files.
 make sure to download it from the git repository
 """
-logo_col = Pg.Column([[Pg.Image('alatoo_logo.png')]])
+logo_and_about_col = Pg.Column([
+    [Pg.Image('alatoo_logo.png')],
+    [Pg.Button('About and Copyright', key="-ABOUT-")]
+])
 
-layout = [[logo_col, control_col, image_col]]
+layout = [[logo_and_about_col, control_col, image_col]]
 
 original = Image.open(image_path)
 window = Pg.Window('Image Editor', layout)
@@ -90,6 +123,9 @@ while True:
 
     if event == "-CHOOSING-":
         image_path = Pg.popup_get_file('Open', no_window=True)
+
+    if event == "-ABOUT-":
+        additional_window()
 
     if event == '-SAVE-':
         save_path = Pg.popup_get_file(
