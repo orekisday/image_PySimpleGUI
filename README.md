@@ -9,6 +9,8 @@
 #### Just [download](https://github.com/orekisday/image_PySimpleGUI/blob/main/config/config_GUI.txt) the requirements and run the next command in your terminal:
 ##### pip install -r config_GUI.txt 
 
+### Since the project consists of a logo of our university, the image with the exact name should be located in your files. Please [download](https://github.com/orekisday/image_PySimpleGUI/blob/main/alatoo_logo.png) the image before running the code!
+
 I have created a mini image editor that is fun to use, and here is how you can use it:
 
 ### 1. When you run the code it opens your files where you can choose a png images for editing. You can [download](https://github.com/orekisday/image_PySimpleGUI/tree/main/images) cool images in case you don't have any.
