@@ -18,3 +18,5 @@ I have created a mini image editor that is fun to use, and here is how you can u
 
 ### 2. Choose an image and have fun! You can blur the image, or change its contrast and do more! And after editing you are able to save the edited image. The saved image will be converted into a png file.
 <img width="612" alt="Screen Shot 2022-05-26 at 2 24 02 PM" src="https://user-images.githubusercontent.com/100344808/170449160-12170cd3-c0e2-4d17-ba52-c1c02dffa562.png">
+
+# The idea and some code snippets by [Clear Code](https://youtube.com/c/ClearCode)
